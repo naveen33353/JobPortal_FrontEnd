@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,5 +14,7 @@ export class SignupComponent {
   login(){
     this.router.navigate(['/login']);
   }
-  
+
+
+
 }

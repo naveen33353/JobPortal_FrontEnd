@@ -7,6 +7,7 @@ import { LandingModule } from './landing/landing.module';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { LoginComponent } from './auth/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoginComponent } from './auth/login/login.component';
     BrowserModule,
     AppRoutingModule,
     LandingModule,
+   HttpClientModule
     
   ],
   providers: [],
