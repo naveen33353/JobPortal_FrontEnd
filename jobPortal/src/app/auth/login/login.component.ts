@@ -27,11 +27,21 @@ export class LoginComponent {
 this.service.login(this.loginForm.value as login).subscribe(
   (res) => {const result:any=res
     console.log(result.token);
+
+    localStorage.setItem("token",result.token)
+
     localStorage.setItem("token",result.token);
     localStorage.setItem("role",result.role);
+
+
     if(result.role == 'COMPANY'){
       this.router.navigate(['/company-dashboard']);
     }
+
+    if(result.role == 'JOBSEEKER'){
+this.router.navigate(["/jobseeker-dashboard"]);
+    }
+
   }
   
 
