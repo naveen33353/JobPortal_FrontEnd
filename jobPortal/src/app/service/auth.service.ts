@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jobSeeker } from '../auth/Models/jobSeeker';
 import { environment } from 'src/environment/environment';
+<<<<<<< HEAD
+import { login } from '../auth/Models/login';
+=======
 import { Company } from '../auth/Models/Company';
+>>>>>>> 4cf1611b82d1a53e6402492e31bd1147eabc99bb
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +30,10 @@ signUp(js : jobSeeker){
 
 signUpCompany(comp : Company){
   return this.http.post(this.url + "company" , comp)
+}
+
+login(login : login){
+return this.http.post(this.url + "auth/login", login);
 }
 
 }

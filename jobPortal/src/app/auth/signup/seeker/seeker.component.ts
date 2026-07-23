@@ -22,31 +22,53 @@ login(){
   this.route.navigate(['/login']);
 }
 
+
 regSeeker = this.fb.group({
   firstName : ['', Validators.required],
   lastName : ['',Validators.required],
-  email : ['',Validators.required,Validators.email],
-  password : ['',Validators.required, Validators.minLength(6)],
-   skills: this.fb.array([
-        this.fb.control('')
-      ]),
+  email : ['',[Validators.required,Validators.email]],
+  password : ['',[Validators.required, Validators.minLength(6)]],
+   skills:  ['', Validators.required],
   location : ['',Validators.required]
 });
 
 
-  register(){
-    this.service.signUp(this.regSeeker.value as jobSeeker).subscribe(
-      (result) => {
-        console.log(result)
-      }
-    );
+ onSubmit() {
+
+  if (this.regSeeker.invalid) {
+    alert("Please fill all required fields.");
+    return;
   }
-  
 
-  onSubmit() {
-    this.register();
-console.log(this.regSeeker.value);
-this.regSeeker.reset();
+  const formValue: jobSeeker = {
+    firstName: this.regSeeker.value.firstName!,
+    lastName: this.regSeeker.value.lastName!,
+    email: this.regSeeker.value.email!,
+    password: this.regSeeker.value.password!,
+    location: this.regSeeker.value.location!,
+    skills: this.regSeeker.value.skills!
+      .split(',')
+      .map(skill => skill.trim())
+      .filter(skill => skill !== '')
+  };
 
+  this.service.signUp(formValue).subscribe({
+    next: (res) => {
+      console.log(res);
+
+      alert("Profile Created Successfully");
+
+      this.regSeeker.reset();
+
+      this.route.navigate(['/login']);
+    },
+
+    error: (err) => {
+      console.error(err);
+      alert("Registration Failed");
+    }
+  });
 }
+
+
 }
