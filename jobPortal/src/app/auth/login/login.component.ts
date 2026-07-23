@@ -26,7 +26,7 @@ export class LoginComponent {
   onSubmit() {
 this.service.login(this.loginForm.value as login).subscribe(
   (res) => {const result:any=res
-    console.log(result.);
+    console.log(result.token);
     localStorage.setItem("token",result.token)
   }
 
