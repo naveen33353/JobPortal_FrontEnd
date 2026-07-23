@@ -33,7 +33,17 @@ this.service.login(this.loginForm.value as login).subscribe(
     localStorage.setItem("token",result.token);
     localStorage.setItem("role",result.role);
 
+
+    if(result.role == 'COMPANY'){
+      this.router.navigate(['/company-dashboard']);
+    }
+
+    if(result.role == 'JOBSEEKER'){
+this.router.navigate(["/jobseeker-dashboard"]);
+    }
+
   }
+  
 
 );;
 this.loginForm.reset();
