@@ -40,6 +40,13 @@ submit(){
   console.log(this.companyReg.value)
   this.register();
    this.companyReg.reset;
+   if(this.companyReg.valid){
+    alert("Company Created !\n Welcome to Hirehub.")
+    this.route.navigate(['/login']);
+   }
+   else{
+    alert(`Something Went Wrong.\n Please try again`);
+   }
 }
 
 }
