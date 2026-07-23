@@ -26,14 +26,16 @@
 
 <div class="auth-wrap">
   <div class="auth-card">
+  <form [formGroup]="companyReg" (ngSubmit)="submit()">
     <h2>Create your Company account</h2>
-    <div class="field"><label>Company name</label><input placeholder="Nimbus Cloud"></div>
-    <div class="field"><label>Email</label><input type="email" placeholder="hr@nimbuscloud.io"></div>
-    <div class="field"><label>Password</label><input type="password" placeholder="••••••••"></div>
-    <div class="field"><label>Website</label><input placeholder="nimbuscloud.io"></div>
-    <div class="field"><label>Location</label><input placeholder="Kochi, IN"></div>
-    <div class="field"><label>Description</label><textarea placeholder="What does the company do?"></textarea></div>
-    <button class="btn btn-primary btn-block">Create company account</button>
+    <div class="field"><label>Company name</label><input formControlName="companyName" placeholder="Nimbus Cloud"></div>
+    <div class="field"><label>Email</label><input formControlName="email" type="email" placeholder="hr@nimbuscloud.io"></div>
+    <div class="field"><label>Password</label><input formControlName="password" type="password" placeholder="••••••••"></div>
+    <div class="field"><label>Website</label><input formControlName="website" placeholder="nimbuscloud.io"></div>
+    <div class="field"><label>Location</label><input formControlName="location" placeholder="Kochi, IN"></div>
+    <div class="field"><label>Description</label><textarea formControlName="description" placeholder="What does the company do?"></textarea></div>
+    <button type="submit" class="btn btn-primary btn-block">Create company account</button>
+  </form>
   </div>
 </div>
 
