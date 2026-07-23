@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jobSeeker } from '../auth/Models/jobSeeker';
 import { environment } from 'src/environment/environment';
+import { login } from '../auth/Models/login';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  url = environment.baseurl+"jobseekers"
+  url = environment.baseurl
    logout() {
     localStorage.removeItem('isLoggedIn');
   }
@@ -21,6 +22,10 @@ export class AuthService {
 
 signUp(js : jobSeeker){
   return this.http.post(this.url, js);
+}
+
+login(login : login){
+return this.http.post(this.url + "auth/login", login);
 }
 
 }
