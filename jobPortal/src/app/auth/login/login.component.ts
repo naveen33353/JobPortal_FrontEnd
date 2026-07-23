@@ -29,7 +29,11 @@ this.service.login(this.loginForm.value as login).subscribe(
     console.log(result.token);
     localStorage.setItem("token",result.token);
     localStorage.setItem("role",result.role);
+    if(result.role == 'COMPANY'){
+      this.router.navigate(['/company-dashboard']);
+    }
   }
+  
 
 );;
 this.loginForm.reset();

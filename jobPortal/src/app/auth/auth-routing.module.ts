@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path:"register/company",
     component:CompanyComponent
+  },
+  {
+    path:'',
+    loadChildren:()=>import('../company/company.module').then(m => m.CompanyModule)
   }
 ];
 
