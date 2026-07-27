@@ -17,10 +17,22 @@
       <a routerLink="all-companies">Companies</a>
       <a href="register-company.html">For Employers</a>
     </nav>
-    <div class="nav-actions">
-      <a routerLink="login" class="btn btn-ghost-dark btn-sm">Log in</a>
-      <a routerLink="register" class="btn btn-primary btn-sm">Sign up</a>
-    </div>
+    <!-- Not Logged In -->
+<div class="nav-actions" *ngIf="!isLoggedIn">
+  <a routerLink="/login" class="btn btn-ghost-dark btn-sm">Log in</a>
+  <a routerLink="/register" class="btn btn-primary btn-sm">Sign up</a>
+</div>
+
+<!-- Logged In -->
+<div class="nav-actions" *ngIf="isLoggedIn">
+  <div class="avatar" [routerLink]="profileRoute">
+    {{ initials }}
+  </div>
+  <button class="btn btn-ghost-dark btn-sm" (click)="logout()">
+        Logout
+      </button>
+</div>
+
   </div>
 </header>
 

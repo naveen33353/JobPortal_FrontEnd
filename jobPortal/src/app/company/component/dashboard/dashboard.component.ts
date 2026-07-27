@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Application } from 'src/app/auth/Models/Application';
 import { Company } from 'src/app/landing/models/company';
 import { Job } from 'src/app/landing/models/job';
@@ -28,40 +29,45 @@ export class DashboardComponent {
   pendingApplications :Application[] = [];
   approvedAppplications:Application[] = [];
 
-  constructor(private compService:CompanyService , private appService:ApplicationService){}
+  constructor(private compService:CompanyService , private appService:ApplicationService ,private router:Router){}
 
   getCompanyById(){
-    this.compService.getCompanyById( Number(localStorage.getItem("Id"))).subscribe(
+    this.compService.getCompanyById( Number(localStorage.getItem("id"))).subscribe(
       (res)=>
           this.company = res
     )
   }
 
   getJobsByCompany(){
-    this.compService.getJobsByCompany(Number(localStorage.getItem("Id"))).subscribe(
+    this.compService.getJobsByCompany(Number(localStorage.getItem("id"))).subscribe(
       (res)=>
           this.jobs = res
     )
   }
 
   getApplicantsByCompany(){
-    this.appService.getApplicantsByCompany(Number(localStorage.getItem("Id"))).subscribe(
+    this.appService.getApplicantsByCompany(Number(localStorage.getItem("id"))).subscribe(
       (res)=>
           this.applications = res
     )
   }
 
   getPendingApplications(){
-    this.appService.getPendindApplicants(Number(localStorage.getItem("Id"))).subscribe(
+    this.appService.getPendindApplicants(Number(localStorage.getItem("id"))).subscribe(
       (res)=>
           this.pendingApplications = res
     )
   }
 
   getHiredApplicants(){
-    this.appService.getHiredApplicants(Number(localStorage.getItem("Id"))).subscribe(
+    this.appService.getHiredApplicants(Number(localStorage.getItem("id"))).subscribe(
       (res)=>
           this.approvedAppplications = res
     )
   }
+
+  logout() {
+  localStorage.clear();
+  this.router.navigate(['/']);
+}
 }

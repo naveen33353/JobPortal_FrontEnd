@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { jobSeeker } from 'src/app/auth/Models/jobSeeker';
 import { AuthService } from 'src/app/service/auth.service';
 import { JobService } from 'src/app/service/job/job.service';
@@ -14,9 +15,9 @@ export class DashboardComponent {
 
 firstName! : string;
 
-  constructor(private seekerService:SeekerService){}
+  constructor(private seekerService:SeekerService , private router:Router){}
 
-  id: number = Number(localStorage.getItem("Id"));
+  id: number = Number(localStorage.getItem("id"));
 
   ngOnInit(){
     this.getSeekerById(this.id);
@@ -34,5 +35,10 @@ firstName! : string;
     },
     error: (err) => console.log(err)
   });
+}
+
+logout() {
+  localStorage.clear();
+  this.router.navigate(['/']);
 }
 }

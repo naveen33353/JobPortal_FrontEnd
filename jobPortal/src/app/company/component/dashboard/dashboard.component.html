@@ -12,7 +12,11 @@
 <div class="page">
 <header class="topnav app">
   <div class="wrap">
-    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
+
+    <a routerLink="/" class="brand">
+      <span class="brand-dot"></span>HireHub
+    </a>
+
     <nav class="nav-links app-links">
       <a routerLink="/company-dashboard" class="active">Dashboard</a>
       <a routerLink="/company-post-job">Post a Job</a>
@@ -20,7 +24,17 @@
       <a routerLink="/company-applicants">Applicants</a>
       <a routerLink="/profile-company">Company Profile</a>
     </nav>
-    <div class="avatar">NC</div>
+
+    <div class="nav-actions">
+     <div class="avatar" *ngIf="company?.companyName">
+  {{ company.companyName.charAt(0) }}{{ company.companyName.split(' ')[1]?.charAt(0) || '' }}
+</div>
+
+      <button class="btn btn-ghost-dark btn-sm" (click)="logout()">
+        Logout
+      </button>
+    </div>
+
   </div>
 </header>
 <div class="app-shell">
@@ -61,7 +75,7 @@
 </div>
 <div class="section-head"><h2>Latest applicants</h2></div>
 <div class="card-row">
-  <div class="card" *ngFor="let app of applications"><div style="display:flex;justify-content:space-between;"><h3 style="font-size:15px;">{{app.jobSeekerName}}</h3><span class="chip" [ngClass]="{
+  <div class="card" *ngFor="let app of applications | slice:0:2"><div style="display:flex;justify-content:space-between;"><h3 style="font-size:15px;">{{app.jobSeekerName}}</h3><span class="chip" [ngClass]="{
         'chip-pending': app.status === 'PENDING',
         'chip-approved': app.status === 'APPROVED',
         'chip-rejected': app.status === 'REJECTED'}">{{ app.status }}</span></div><p class="muted" style="font-size:13px;margin-top:6px;">{{app.jobTitle}} | {{app.appliedDate}}</p></div>

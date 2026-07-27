@@ -13,15 +13,29 @@
 <div class="page">
 <header class="topnav app">
   <div class="wrap">
-    <a href="seeker-dashboard.html" class="brand"><span class="brand-dot"></span>HireHub</a>
+
+    <a routerLink="/jobseeker-dashboard" class="brand">
+      <span class="brand-dot"></span>HireHub
+    </a>
+
     <nav class="nav-links app-links">
-      <a href="seeker-dashboard.html" class="active">Dashboard</a>
-      <a href="seeker-jobs.html">Find Jobs</a>
-      <a href="seeker-applications.html">Applications</a>
-      <a href="seeker-saved.html">Saved</a>
-      <a href="seeker-profile.html">Profile</a>
+      <a routerLink="/jobseeker-dashboard" class="active">Dashboard</a>
+      <a routerLink="/alljobs">Find Jobs</a>
+      <a routerLink="/jobseeker-applications">Applications</a>
+      <a routerLink="/saved-jobs">Saved</a>
+      <a routerLink="/profile-jobseeker">Profile</a>
     </nav>
-    <div class="avatar">AM</div>
+
+    <div class="nav-actions">
+      <div class="avatar">
+        {{ seeker?.firstName?.charAt(0) }}{{ seeker?.lastName?.charAt(0) }}
+      </div>
+
+      <button class="btn btn-ghost-dark btn-sm" (click)="logout()">
+        Logout
+      </button>
+    </div>
+
   </div>
 </header>
 <div class="app-shell">
