@@ -1,23 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
+  HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpEvent,
-  HttpInterceptor
+  HttpEvent
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
-  // Paths that should NOT get an Authorization header
-  private publicPaths: string[] = [
-    '/api/auth/login',
-    '/api/auth/register',
-    '/api/auth/signup',
-    '/api/jobs',
-    '/api/company'
-  ];
 
   constructor() {}
 
@@ -26,32 +17,42 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
 
-    const isPublicPath = this.publicPaths.some(path => req.url.includes(path));
+    // Extract only the path (works for absolute and relative URLs)
+    const url = new URL(req.url, window.location.origin).pathname;
+
+    // Public endpoints (NO JWT required)
+    const isPublicPath =
+      url === '/api/auth/login' ||
+      url === '/api/auth/register' ||
+      url === '/api/auth/signup' ||
+      url === '/api/jobs' ||
+      url === '/api/company';
+
     const token = localStorage.getItem('token');
 
+    console.log('Interceptor called');
+    console.log('URL:', url);
+    console.log('Token:', token);
 
-     console.log("Interceptor called");
-  console.log("Token:", token);
-
-
-    // Clone the request and add headers
-    // Don't attach Authorization header for public endpoints or when there's no token
+    // Skip Authorization header for public endpoints or when no token exists
     if (isPublicPath || !token) {
-      const req2 = req.clone({
-        setHeaders: {
-          'Content-Type': 'application/json'
-        }
-      });
-      return next.handle(req2);
+      return next.handle(
+        req.clone({
+          setHeaders: {
+            'Content-Type': 'application/json'
+          }
+        })
+      );
     }
 
-    const authRequest = req.clone({
-      setHeaders: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    });
-
-    return next.handle(authRequest);
+    // Attach JWT for protected endpoints
+    return next.handle(
+      req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+    );
   }
 }
