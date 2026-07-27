@@ -27,11 +27,12 @@ export class LoginComponent {
 this.service.login(this.loginForm.value as login).subscribe(
   (res) => {const result:any=res
     console.log(result.token);
+    console.log(result.id)
 
-    localStorage.setItem("token",result.token)
 
     localStorage.setItem("token",result.token);
     localStorage.setItem("role",result.role);
+    localStorage.setItem("Id",result.id);
 
 
     if(result.role == 'COMPANY'){

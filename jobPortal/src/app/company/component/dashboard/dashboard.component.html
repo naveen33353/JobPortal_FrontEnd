@@ -12,13 +12,13 @@
 <div class="page">
 <header class="topnav app">
   <div class="wrap">
-    <a href="company-dashboard.html" class="brand"><span class="brand-dot"></span>HireHub</a>
+    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
     <nav class="nav-links app-links">
-      <a href="company-dashboard.html" class="active">Dashboard</a>
-      <a href="company-post-job.html">Post a Job</a>
-      <a href="company-manage-jobs.html">Manage Jobs</a>
-      <a href="company-applicants.html">Applicants</a>
-      <a href="company-profile.html">Company Profile</a>
+      <a routerLink="/company-dashboard" class="active">Dashboard</a>
+      <a routerLink="/company-post-job">Post a Job</a>
+      <a routerLink="/company-manage-jobs">Manage Jobs</a>
+      <a routerLink="/company-applicants">Applicants</a>
+      <a routerLink="/profile-company">Company Profile</a>
     </nav>
     <div class="avatar">NC</div>
   </div>
@@ -27,44 +27,44 @@
 <aside class="sidebar">
   <div class="sidebar-group">
     <span class="sidebar-label">General</span>
-    <a href="company-dashboard.html" class="active"><span class="dot"></span>Dashboard</a>
-    <a href="company-profile.html"><span class="dot"></span>Company Profile</a>
+    <a routerLink="/company-dashboard" class="active"><span class="dot"></span>Dashboard</a>
+    <a routerLink="/profile-company"><span class="dot"></span>Company Profile</a>
   </div>
   <div class="sidebar-group">
     <span class="sidebar-label">Hiring</span>
-    <a href="company-post-job.html"><span class="dot"></span>Post a Job</a>
-    <a href="company-manage-jobs.html"><span class="dot"></span>Manage Jobs</a>
-    <a href="company-applicants.html"><span class="dot"></span>Applicants</a>
+    <a routerLink="/company-post-job"><span class="dot"></span>Post a Job</a>
+    <a routerLink="/company-manage-jobs"><span class="dot"></span>Manage Jobs</a>
+    <a routerLink="/company-applicants"><span class="dot"></span>Applicants</a>
   </div>
 </aside>
 <main class="main">
 
-<div class="page-title">Nimbus Cloud</div>
+<div class="page-title">{{company?.companyName}}</div>
 <div class="page-sub">Hiring overview</div>
 <div style="margin-bottom:24px;"><a href="company-post-job.html" class="btn btn-primary">Post a job</a></div>
 <div class="card-row-3" style="margin-bottom:16px;">
-  <div class="stat-card"><div class="n">6</div><div class="l">Active jobs</div></div>
-  <div class="stat-card"><div class="n">142</div><div class="l">Total applicants</div></div>
-  <div class="stat-card"><div class="n">23</div><div class="l">Pending review</div><span class="sub">needs action</span></div>
+  <div class="stat-card"><div class="n">{{jobs.length}}</div><div class="l">Active jobs</div></div>
+  <div class="stat-card"><div class="n">{{applications.length}}</div><div class="l">Total applicants</div></div>
+  <div class="stat-card"><div class="n">{{pendingApplications.length}}</div><div class="l">Pending review</div><span class="sub"  *ngIf="pendingApplications.length > 0">needs action</span></div>
 </div>
 <div class="card-row-3" style="margin-bottom:32px;grid-template-columns:1fr;max-width:220px;">
-  <div class="stat-card"><div class="n">8</div><div class="l">Hired</div></div>
+  <div class="stat-card"><div class="n">{{approvedAppplications.length}}</div><div class="l">Hired</div></div>
 </div>
 <div class="section-head"><h2>Your jobs</h2></div>
 <div class="table-wrap" style="margin-bottom:32px;">
   <table>
     <thead><tr><th>Role</th><th>Posted</th><th>Applicants</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Senior Backend Engineer</td><td>3 days ago</td><td>31</td><td><span class="chip chip-open">Open</span></td></tr>
-      <tr><td>DevOps Engineer</td><td>1 week ago</td><td>18</td><td><span class="chip chip-open">Open</span></td></tr>
-      <tr><td>Support Engineer</td><td>3 weeks ago</td><td>64</td><td><span class="chip chip-closed">Closed</span></td></tr>
+      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active ? 'chip-open' : 'chip-closed'">{{ job.active ? 'Open' : 'Closed' }}</span></td></tr>
     </tbody>
   </table>
 </div>
 <div class="section-head"><h2>Latest applicants</h2></div>
 <div class="card-row">
-  <div class="card"><div style="display:flex;justify-content:space-between;"><h3 style="font-size:15px;">Aditi Menon</h3><span class="chip chip-pending">Pending</span></div><p class="muted" style="font-size:13px;margin-top:6px;">Backend Engineer · 2 hrs ago</p></div>
-  <div class="card"><div style="display:flex;justify-content:space-between;"><h3 style="font-size:15px;">Rohan Iyer</h3><span class="chip chip-pending">Pending</span></div><p class="muted" style="font-size:13px;margin-top:6px;">DevOps Engineer · 5 hrs ago</p></div>
+  <div class="card" *ngFor="let app of applications"><div style="display:flex;justify-content:space-between;"><h3 style="font-size:15px;">{{app.jobSeekerName}}</h3><span class="chip" [ngClass]="{
+        'chip-pending': app.status === 'PENDING',
+        'chip-approved': app.status === 'APPROVED',
+        'chip-rejected': app.status === 'REJECTED'}">{{ app.status }}</span></div><p class="muted" style="font-size:13px;margin-top:6px;">{{app.jobTitle}} | {{app.appliedDate}}</p></div>
 </div>
 
 </main>
