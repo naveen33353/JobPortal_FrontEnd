@@ -32,6 +32,7 @@ this.service.login(this.loginForm.value as login).subscribe(
 
     localStorage.setItem("token",result.token);
     localStorage.setItem("role",result.role);
+    localStorage.setItem("id",result.id);
 
 
     if(result.role == 'COMPANY'){

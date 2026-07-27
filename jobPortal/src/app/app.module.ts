@@ -7,7 +7,7 @@ import { LandingModule } from './landing/landing.module';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { AuthModule } from './auth/auth.module';
 import { LoginComponent } from './auth/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +22,13 @@ import { HttpClientModule } from '@angular/common/http';
    HttpClientModule
     
   ],
-  providers: [],
+  providers: [
+     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
