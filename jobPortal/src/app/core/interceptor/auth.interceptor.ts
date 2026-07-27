@@ -10,17 +10,35 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  // Paths that should NOT get an Authorization header
+  private publicPaths: string[] = [
+    '/api/auth/login',
+    '/api/auth/register',
+    '/api/auth/signup',
+    '/api/jobs',
+    '/api/company'
+  ];
+
   constructor() {}
 
-   intercept(
+  intercept(
     req: HttpRequest<any>,
     next: HttpHandler
-  ){
+  ): Observable<HttpEvent<any>> {
 
-    // Get token from localStorage
+    const isPublicPath = this.publicPaths.some(path => req.url.includes(path));
     const token = localStorage.getItem('token');
 
-    // Clone the request and add headers
+    // Don't attach Authorization header for public endpoints or when there's no token
+    if (isPublicPath || !token) {
+      const req2 = req.clone({
+        setHeaders: {
+          'Content-Type': 'application/json'
+        }
+      });
+      return next.handle(req2);
+    }
+
     const authRequest = req.clone({
       setHeaders: {
         'Authorization': `Bearer ${token}`,

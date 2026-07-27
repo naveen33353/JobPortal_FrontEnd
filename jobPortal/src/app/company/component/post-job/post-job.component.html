@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post a Job · HireHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="page">
+<header class="topnav app">
+  <div class="wrap">
+    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
+    <nav class="nav-links app-links">
+      <a routerLink="/company-dashboard">Dashboard</a>
+      <a routerLink="/company-post-job" class="active">Post a Job</a>
+      <a routerLink="/company-manage-jobs">Manage Jobs</a>
+      <a routerLink="/company-applicants">Applicants</a>
+      <a routerLink="/profile-company">Company Profile</a>
+    </nav>
+    <div class="avatar">NC</div>
+  </div>
+</header>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="sidebar-group">
+    <span class="sidebar-label">General</span>
+    <a routerLink="/company-dashboard" ><span class="dot"></span>Dashboard</a>
+    <a routerLink="/profile-company"><span class="dot"></span>Company Profile</a>
+  </div>
+  <div class="sidebar-group">
+    <span class="sidebar-label">Hiring</span>
+    <a routerLink="/company-post-job" class="active"><span class="dot"></span>Post a Job</a>
+    <a routerLink="/company-manage-jobs"><span class="dot"></span>Manage Jobs</a>
+    <a routerLink="/company-applicants"><span class="dot"></span>Applicants</a>
+  </div>
+</aside>
+<main class="main">
+
+<div class="page-title">Post a New Job</div>
+<div class="form-card">
+  <div class="field"><label>Job title / description</label><textarea placeholder="Senior Backend Engineer — own our applications service…"></textarea></div>
+  <div class="field"><label>Experience required</label><input placeholder="3–5 years"></div>
+  <div class="field"><label>Salary (₹/yr)</label><input placeholder="1800000"></div>
+  <div class="field"><label>Application deadline</label><input type="date" value="2026-07-28"></div>
+  <div class="field"><label>Required skills (comma separated)</label><input placeholder="Java, Spring Boot, PostgreSQL, AWS"></div>
+  <div class="form-actions">
+    <a href="company-manage-jobs.html" class="btn btn-primary">Publish job</a>
+    <a href="company-manage-jobs.html" class="btn btn-secondary">Save as draft</a>
+  </div>
+</div>
+
+</main>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Jobs · HireHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="page">
+<header class="topnav">
+  <div class="wrap">
+    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
+    <nav class="nav-links">
+      <a routerLink="alljobs" class="active">Find Jobs</a>
+      <a routerLink="/all-companies">Companies</a>
+      <a href="register-company.html">For Employers</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost-dark btn-sm">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Sign up</a>
+    </div>
+  </div>
+</header>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>1,204 open roles</h2>
+      <input type="text" placeholder="Search by keyword — GET /api/jobs/search" style="padding:10px 14px;border:1px solid var(--line);border-radius:8px;width:280px;">
+    </div>
+    <div class="browse-grid">
+      <div class="filters">
+        <h4>Filters</h4>
+        <div class="filter-group"><span class="lbl">Location</span>
+          <select><option>Any location</option><option>Kochi, IN</option><option>Remote</option><option>Bengaluru</option></select>
+        </div>
+        <div class="filter-group"><span class="lbl">Experience</span>
+          <select><option>Any level</option><option>0–2 years</option><option>3–5 years</option><option>5+ years</option></select>
+        </div>
+        <div class="filter-group"><span class="lbl">Skills</span>
+          <span class="chip-choice selected">Java</span><span class="chip-choice">React</span>
+          <span class="chip-choice">SQL</span><span class="chip-choice">AWS</span>
+        </div>
+        <button class="btn btn-primary btn-block">Apply filters</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Role</th><th>Company</th><th>Location</th><th>Salary</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Backend Engineer</td><td>Nimbus Cloud</td><td>Kochi</td><td>₹18L</td><td><span class="chip chip-open">Open</span></td><td class="actions"><a href="job-details.html">View</a></td></tr>
+            <tr><td>UX Designer</td><td>Fernwood Labs</td><td>Remote</td><td>₹12L</td><td><span class="chip chip-open">Open</span></td><td class="actions"><a href="job-details.html">View</a></td></tr>
+            <tr><td>Data Analyst</td><td>Harbor &amp; Finch</td><td>Bengaluru</td><td>₹10L</td><td><span class="chip chip-open">Open</span></td><td class="actions"><a href="job-details.html">View</a></td></tr>
+            <tr><td>QA Engineer</td><td>Nimbus Cloud</td><td>Kochi</td><td>₹9L</td><td><span class="chip chip-closed">Closed</span></td><td class="actions"><a href="job-details.html">View</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 HireHub</span>
+    <span class="mono-label" style="color:var(--muted-lt)">com.aitrich.JobPortalSystem</span>
+  </div>
+</footer>
+</div>
+</body>
+</html>
