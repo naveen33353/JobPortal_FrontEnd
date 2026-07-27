@@ -11,10 +11,10 @@
 <div class="page">
 <header class="topnav">
   <div class="wrap">
-    <a href="index.html" class="brand"><span class="brand-dot"></span>HireHub</a>
+    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
     <nav class="nav-links">
-      <a href="jobs.html">Find Jobs</a>
-      <a href="companies.html">Companies</a>
+      <a routerLink="alljobs">Find Jobs</a>
+      <a routerLink="all-companies">Companies</a>
       <a href="register-company.html">For Employers</a>
     </nav>
     <div class="nav-actions">
@@ -39,8 +39,8 @@
       <span class="tag-pill">Sales</span><span class="tag-pill">Design</span>
     </div>
     <div class="stat-row">
-      <div><div class="stat-num">1,204</div><div class="stat-label">Open roles</div></div>
-      <div><div class="stat-num">318</div><div class="stat-label">Companies</div></div>
+      <div><div class="stat-num">{{jobs.length}}</div><div class="stat-label">Open roles</div></div>
+      <div><div class="stat-num">{{companies.length}}</div><div class="stat-label">Companies</div></div>
     </div>
   </div>
 </section>
@@ -49,20 +49,24 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Featured roles</h2>
-      <a href="jobs.html" class="mono-label">View all jobs →</a>
+      <a routerLink="alljobs" class="mono-label">View all jobs →</a>
     </div>
-    <div class="card-row">
-      <div class="job-card">
-        <div class="top"><h3>Senior Backend Engineer</h3><span class="chip chip-open">Open</span></div>
-        <div class="meta">Nimbus Cloud · Kochi, IN · ₹18,00,000/yr</div>
-        <div class="skill-tags"><span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">AWS</span></div>
-      </div>
-      <div class="job-card">
-        <div class="top"><h3>Product Designer</h3><span class="chip chip-open">Open</span></div>
-        <div class="meta">Fernwood Labs · Remote · ₹12,00,000/yr</div>
-        <div class="skill-tags"><span class="skill-tag">Figma</span><span class="skill-tag">UX Research</span></div>
-      </div>
+<div class="card-row">
+  <div class="job-card" *ngFor="let job of jobs | slice:0:2">
+    <div class="top">
+      <h3>{{ job.jobTitle }}</h3>
+      <span class="chip chip-open" *ngIf="job.active">Open</span>
     </div>
+
+    <div class="meta">
+      {{ job.companyName }} · {{ job.location }} · {{ job.salary }}
+    </div>
+
+   <div class="skill-tags">
+  <span class="skill-tag" *ngFor="let skill of job.skills">{{ skill }}</span>
+</div>
+  </div>
+</div>
   </div>
 </section>
 

@@ -22,6 +22,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
    HttpClientModule
     
   ],
+<<<<<<< HEAD
   providers: [
      {
       provide: HTTP_INTERCEPTORS,
@@ -29,6 +30,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
       multi: true
     }
   ],
+=======
+  providers: [ {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
+>>>>>>> a49905d857a6c2aeb02ed8ee2f7ad42c176610c4
   bootstrap: [AppComponent]
 })
 export class AppModule { }
