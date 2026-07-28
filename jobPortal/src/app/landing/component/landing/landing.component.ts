@@ -80,6 +80,8 @@ export class LandingComponent {
     localStorage.clear();
     this.router.navigate(['/']);
 
+
+
   }
 
 }

@@ -55,11 +55,11 @@
 </aside>
 <main class="main">
 
-<div class="page-title"> Welcome back, {{ seeker?.firstName }}</div>
+<div class="page-title"> Welcome back, {{seeker?.firstName }}</div>
 <div class="page-sub">Here's where your search stands.</div>
 <div style="margin-bottom:24px;"><a href="seeker-jobs.html" class="btn btn-primary">Browse jobs</a></div>
 <div class="card-row-3" style="margin-bottom:32px;">
-  <div class="stat-card"><div class="n">14</div><div class="l">Applications sent</div></div>
+  <div class="stat-card"><div class="n">{{ totalApplications }}</div><div class="l">Applications sent</div></div>
   <div class="stat-card"><div class="n">5</div><div class="l">Pending review</div><span class="sub">in progress</span></div>
   <div class="stat-card"><div class="n">3</div><div class="l">Approved</div><span class="sub">↑ offers</span></div>
 </div>
