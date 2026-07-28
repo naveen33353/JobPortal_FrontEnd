@@ -41,11 +41,12 @@ export class DashboardComponent {
   });
 }
 
+logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/']);
+    alert("Continue to Logout?");
+  }
 
-logout() {
-  localStorage.clear();
-  this.router.navigate(['/']);
-}
 
 applicationsById :  any[] =[];
  totalApplications = 0;
@@ -70,9 +71,6 @@ getApplicationsByJobseekerId(id : number){
     this.getApplicationsByJobseekerId(this.id);
     console.log(this.totalApplications);
   }
-
-
-
 
 
 }
