@@ -37,8 +37,9 @@ firstName! : string;
   });
 }
 
-logout() {
-  localStorage.clear();
-  this.router.navigate(['/']);
-}
+logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/']);
+    alert("Continue to Logout?");
+  }
 }
