@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { jobSeeker } from 'src/app/auth/Models/jobSeeker';
-import { AuthService } from 'src/app/service/auth.service';
-import { JobService } from 'src/app/service/job/job.service';
-import { JobseekerService } from 'src/app/service/jobseeker/jobseeker.service';
+import { ApplicationService } from 'src/app/service/application/application.service';
+
 import { SeekerService } from 'src/app/service/seeker/seeker.service';
 
 @Component({
@@ -13,19 +12,24 @@ import { SeekerService } from 'src/app/service/seeker/seeker.service';
 })
 export class DashboardComponent {
 
-firstName! : string;
+// firstName! : string;
 
-  constructor(private seekerService:SeekerService , private router:Router){}
 
-  id: number = Number(localStorage.getItem("id"));
+  
 
-  ngOnInit(){
-    this.getSeekerById(this.id);
-  }
+  constructor(private seekerService : SeekerService, private applicationService : ApplicationService,
+               private router : Router){}
+
+  id : number = Number(localStorage.getItem("id"));
+
+
+ 
+
+
+ 
 
   seeker!:jobSeeker;
-  seekerName!:string;
-
+ 
  getSeekerById(id: number) {
   this.seekerService.getSeekerById(id).subscribe({
     next: (res) => {
@@ -42,4 +46,31 @@ logout(): void {
     this.router.navigate(['/']);
     alert("Continue to Logout?");
   }
+
+
+applicationsById :  any[] =[];
+ totalApplications = 0;
+
+
+getApplicationsByJobseekerId(id : number){
+  this.applicationService.getApplicationByjobSeekerId(id).subscribe({
+    next : (result) =>{
+      console.log(result);
+      this.applicationsById=result ;
+      this.totalApplications  = this.applicationsById.length;
+      console.log(this.totalApplications);
+    },
+     error: (err) => {
+      console.log(err);
+    }
+  });
+}
+
+ ngOnInit(){
+    this.getSeekerById(this.id);
+    this.getApplicationsByJobseekerId(this.id);
+    console.log(this.totalApplications);
+  }
+
+
 }

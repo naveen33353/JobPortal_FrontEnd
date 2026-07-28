@@ -13,7 +13,7 @@ import { CompanyService } from 'src/app/service/company/company.service';
 })
 export class DashboardComponent {
   ngOnInit() {
-  console.log("ID:", localStorage.getItem("Id"));
+  console.log("ID:", localStorage.getItem("id"));
   console.log("Token:", localStorage.getItem("token"));
 
   this.getCompanyById();
