@@ -109,6 +109,7 @@ export class AllCompaniesComponent {
   logout(): void {
     localStorage.clear();
     this.router.navigate(['/']);
+    alert("Continue to Logout?");
   }
 
   goToProfile(): void {

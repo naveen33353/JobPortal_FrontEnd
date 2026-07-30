@@ -20,8 +20,16 @@
       <a routerLink="/company-applicants">Applicants</a>
       <a routerLink="/profile-company"  class="active">Company Profile</a>
     </nav>
-    <div class="avatar">NC</div>
-  </div>
+    <div style="display: flex; gap: 2rem;">
+<div class="avatar" *ngIf="company?.companyName">
+  {{ company.companyName.charAt(0) }}{{ company.companyName.split(' ')[1]?.charAt(0) || '' }}
+</div>
+<button class="btn btn-ghost-dark btn-sm" (click)="logout()">
+        Logout
+      </button> 
+    </div>
+
+</div>
 </header>
 <div class="app-shell">
 <aside class="sidebar">
@@ -41,23 +49,25 @@
 
 <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;">
   <div style="display:flex;gap:16px;align-items:center;">
-    <div class="avatar" style="width:52px;height:52px;font-size:16px;">NC</div>
-    <div><h2 style="font-size:20px;">Nimbus Cloud</h2><p class="muted" style="font-size:13.5px;">Kochi, IN</p></div>
+    <div class="avatar" style="width:52px;height:52px;font-size:16px;"><div *ngIf="company?.companyName">
+  {{ company.companyName.charAt(0) }}{{ company.companyName.split(' ')[1]?.charAt(0) || '' }}
+</div></div>
+    <div><h2 style="font-size:20px;">{{company.companyName}}</h2><p class="muted" style="font-size:13.5px;">{{company.location}}</p></div>
   </div>
-  <a href="company-profile-edit.html" class="btn btn-secondary btn-sm">Edit profile</a>
+  <a [routerLink]="['/company/edit',company.companyId]" class="btn btn-secondary btn-sm">Edit profile</a>
 </div>
 <div class="card" style="margin-bottom:16px;">
-  <h3 style="font-size:14px;margin-bottom:8px;">Contact</h3>
-  <p style="font-size:13.5px;">hr@nimbuscloud.io · nimbuscloud.io</p>
+  <h3 style="font-size:14px;margin-bottom:8px;">Connect with us</h3>
+  <p style="font-size:13.5px;">{{company.website}}</p>
 </div>
 <div class="card" style="margin-bottom:16px;">
   <h3 style="font-size:14px;margin-bottom:8px;">Description</h3>
-  <p style="font-size:13.5px;">Cloud infrastructure tooling for mid-market SaaS teams. 120 employees, founded 2019.</p>
+  <p style="font-size:13.5px;">{{company.description}}</p>
 </div>
 <div class="card">
   <h3 style="font-size:14px;margin-bottom:8px;">Public preview</h3>
   <p class="muted" style="font-size:13px;margin-bottom:12px;">This is what job seekers see on your public company page.</p>
-  <a href="company.html" class="btn btn-secondary">View public profile</a>
+  <a routerLink="/company" class="btn btn-secondary">View public profile</a>
 </div>
 
 </main>

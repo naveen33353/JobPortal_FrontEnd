@@ -98,9 +98,10 @@ totaljobs! : Number;
   logout(): void {
     localStorage.clear();
     this.router.navigate(['/']);
+    alert("Continue to Logout?");
   }
-
   goToProfile(): void {
     this.router.navigate([this.profileRoute]);
   }
+
 }

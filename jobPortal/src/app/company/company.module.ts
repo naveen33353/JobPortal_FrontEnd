@@ -8,6 +8,13 @@ import { CompanyProfileComponent } from './component/company-profile/company-pro
 import { PostJobComponent } from './component/post-job/post-job.component';
 import { ManageJobComponent } from './component/manage-job/manage-job.component';
 import { ApplicantsComponent } from './component/applicants/applicants.component';
+import { CompanyComponent } from './component/company/company.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
+import { RouterModule } from '@angular/router';
+import { ApplicantComponent } from './component/applicant/applicant.component';
+import { ApplicantsListComponent } from './component/applicants-list/applicants-list.component';
+import { ReviewComponent } from './component/review/review.component';
 
 
 @NgModule({
@@ -17,11 +24,18 @@ import { ApplicantsComponent } from './component/applicants/applicants.component
     CompanyProfileComponent,
     PostJobComponent,
     ManageJobComponent,
-    ApplicantsComponent
+    ApplicantsComponent,
+    CompanyComponent,
+    EditProfileComponent,
+    ApplicantComponent,
+    ApplicantsListComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,
-    CompanyRoutingModule
+    CompanyRoutingModule,
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class CompanyModule { }

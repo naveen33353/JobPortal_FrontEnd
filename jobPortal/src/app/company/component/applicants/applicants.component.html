@@ -39,18 +39,13 @@
 </aside>
 <main class="main-wide">
 
-<div class="breadcrumb">Manage Jobs / <span>Senior Backend Engineer</span></div>
-<div class="section-head"><h2>31 applicants</h2></div>
-<div class="tab-row"><span class="tab active">All</span><span class="tab">Pending</span><span class="tab">Approved</span></div>
+<div class="section-head"><h2>Manage Jobs</h2><a routerLink="/company-post-job" class="btn btn-primary btn-sm">Post a job</a></div>
 <div class="table-wrap">
   <table>
-    <thead><tr><th>Applicant</th><th>Applied On</th><th>Skills Match</th><th>Status</th><th></th></tr></thead>
+    <thead><tr><th>Role</th><th>Posted</th><th>Deadline</th><th>Applicants</th><th>Status</th><th></th></tr></thead>
     <tbody>
-      <tr><td>Aditi Menon</td><td>23 Jun 2026</td><td>Java, Spring, AWS</td><td><span class="chip chip-pending">Pending</span></td><td class="actions"><a href="company-applicant.html">Review</a></td></tr>
-      <tr><td>Rohan Iyer</td><td>22 Jun 2026</td><td>Java, SQL</td><td><span class="chip chip-pending">Pending</span></td><td class="actions"><a href="company-applicant.html">Review</a></td></tr>
-      <tr><td>Meera Nair</td><td>18 Jun 2026</td><td>Spring, Docker</td><td><span class="chip chip-approved">Approved</span></td><td class="actions"><a href="company-applicant.html">Review</a></td></tr>
-      <tr><td>Sam Thomas</td><td>15 Jun 2026</td><td>Java</td><td><span class="chip chip-rejected">Rejected</span></td><td class="actions"><a href="company-applicant.html">Review</a></td></tr>
-    </tbody>
+      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a [routerLink]="['/company/applicants/',job.jobId]">View</a></td></tr>
+      </tbody>
   </table>
 </div>
 

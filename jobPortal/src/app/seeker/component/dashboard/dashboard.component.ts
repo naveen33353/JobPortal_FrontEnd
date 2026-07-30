@@ -32,8 +32,19 @@ export class DashboardComponent implements OnInit {
   seeker!: jobSeeker;
 
 
+
+
   applicationsById: Application[] = [];
   totalApplications: number = 0;
+
+
+
+
+
+
+
+
+
 
 
   applicationsByPending: Application[] = [];
@@ -117,8 +128,6 @@ export class DashboardComponent implements OnInit {
 
 
   }
-
-
 
 
 
@@ -236,3 +245,4 @@ export class DashboardComponent implements OnInit {
 
 
 }
+

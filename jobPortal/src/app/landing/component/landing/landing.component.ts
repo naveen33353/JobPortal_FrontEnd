@@ -79,9 +79,6 @@ export class LandingComponent {
   logout(){
     localStorage.clear();
     this.router.navigate(['/']);
-
-
-
   }
 
 }
