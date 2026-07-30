@@ -28,12 +28,17 @@ companyReg = this.fb.group({
     description :['',Validators.required]
 })
 
-register(){
-  this.service.signUpCompany(this.companyReg.value as Company).subscribe(
-    (res)=>{
-          console.log(res)
+register() {
+  this.service.signUpCompany(this.companyReg.value as Company).subscribe({
+    next: (res) => {
+      console.log("SUCCESS", res);
+    },
+    error: (err) => {
+      console.log("ERROR", err);
+      console.log("Status:", err.status);
+      console.log("Body:", err.error);
     }
-  )
+  });
 }
 
 submit(){

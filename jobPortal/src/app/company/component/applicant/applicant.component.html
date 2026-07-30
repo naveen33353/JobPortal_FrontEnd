@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Job Applicants · HireHub</title>
+<title>Applicant Detail · HireHub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -20,7 +20,7 @@
       <a routerLink="/company-applicants" class="active">Applicants</a>
       <a routerLink="/profile-company">Company Profile</a>
     </nav>
-    <div class="avatar">NC</div>
+    <div class="avatar">{{initials}}</div>
   </div>
 </header>
 <div class="app-shell">
@@ -37,16 +37,26 @@
     <a routerLink="/company-applicants" class="active"><span class="dot"></span>Applicants</a>
   </div>
 </aside>
-<main class="main-wide">
+<main class="main">
 
-<div class="section-head"><h2>Manage Jobs</h2><a routerLink="/company-post-job" class="btn btn-primary btn-sm">Post a job</a></div>
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>Role</th><th>Posted</th><th>Deadline</th><th>Applicants</th><th>Status</th><th></th></tr></thead>
-    <tbody>
-      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a [routerLink]="['/company/applicants/',job.jobId]">View</a></td></tr>
-      </tbody>
-  </table>
+<div class="breadcrumb">Applicants / <span>{{app.jobSeekerName}}</span></div>
+<div class="card-row" style="grid-template-columns:1fr 2fr;align-items:start;">
+  <div class="card">
+    <div class="avatar" style="width:52px;height:52px;font-size:16px;margin-bottom:12px;" *ngIf="app">{{app.jobSeekerName.charAt(0)}}</div>
+    <h3 style="font-size:17px;">{{app.jobSeekerName}}</h3>
+    <p class="muted" style="font-size:13px;">{{app.location}}</p>
+    <p class="muted" style="font-size:13px;">{{app.email}}</p>
+    <a href="#" class="btn btn-secondary btn-block" style="margin-top:16px;">Open resume PDF</a>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;">
+      <h3 style="font-size:15px;">Application for {{app.jobTitle}}</h3>
+      <span class="chip " [ngClass]="{'chip-rejected':app.status === 'REJECTED','chip-pending' : app.status === 'PENDING','chip-open' : app.status === 'APPROVED'}">{{app.status}}</span>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:4px;">Applied on {{app.appliedDate}}</p>
+    <div style="margin-top:18px;height:220px;border:1px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;">Resume preview (PDF)</div>
+    <a [routerLink]="['/company/review',app.applicationId]" class="btn btn-primary" style="margin-top:16px;">Review application</a>
+  </div>
 </div>
 
 </main>

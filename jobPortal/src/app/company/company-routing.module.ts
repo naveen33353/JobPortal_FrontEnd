@@ -6,6 +6,11 @@ import { CompanyProfileComponent } from './component/company-profile/company-pro
 import { PostJobComponent } from './component/post-job/post-job.component';
 import { ManageJobComponent } from './component/manage-job/manage-job.component';
 import { ApplicantsComponent } from './component/applicants/applicants.component';
+import { CompanyComponent } from './component/company/company.component';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
+import { ApplicantComponent } from './component/applicant/applicant.component';
+import { ApplicantsListComponent } from './component/applicants-list/applicants-list.component';
+import { ReviewComponent } from './component/review/review.component';
 
 const routes: Routes = [
   {path:'company-dashboard',component:DashboardComponent},
@@ -13,7 +18,13 @@ const routes: Routes = [
   {path:'profile-company',component:CompanyProfileComponent},
   {path:'company-post-job',component:PostJobComponent},
   {path:'company-manage-jobs',component:ManageJobComponent},
-  {path:'company-applicants',component:ApplicantsComponent}
+  {path:'company-applicants',component:ApplicantsComponent},
+  {path:'company',component:CompanyComponent},
+  {path:'company/:id' , component:CompanyComponent},
+  {path:'company/edit/:id',component:EditProfileComponent},
+  {path:'company/applicants/:jobId',component:ApplicantsListComponent},
+  {path:'company/applicant/:appId', component:ApplicantComponent},
+  {path:'company/review/:appId',component:ReviewComponent}
 ];
 
 @NgModule({

@@ -14,13 +14,22 @@
   <div class="wrap">
     <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
     <nav class="nav-links app-links">
-      <a routerLink="/company-dashboard" >Dashboard</a>
-      <a routerLink="/company-post-job">Post a Job</a>
+      <a routerLink="/company-dashboard">Dashboard</a>
+      <a routerLink="/company-post-job" >Post a Job</a>
       <a routerLink="/company-manage-jobs" class="active">Manage Jobs</a>
       <a routerLink="/company-applicants">Applicants</a>
       <a routerLink="/profile-company">Company Profile</a>
     </nav>
-    <div class="avatar">NC</div>
+    <div class="nav-actions">
+     <div class="avatar" *ngIf="company?.companyName">
+  {{ company.companyName.charAt(0) }}{{ company.companyName.split(' ')[1]?.charAt(0) || '' }}
+</div>
+
+      <button class="btn btn-ghost-dark btn-sm" (click)="logout()">
+        Logout
+      </button>
+    </div>
+
   </div>
 </header>
 <div class="app-shell">
@@ -39,15 +48,13 @@
 </aside>
 <main class="main-wide">
 
-<div class="section-head"><h2>Manage Jobs</h2><a href="company-post-job.html" class="btn btn-primary btn-sm">Post a job</a></div>
+<div class="section-head"><h2>Manage Jobs</h2><a routerLink="/company-post-job" class="btn btn-primary btn-sm">Post a job</a></div>
 <div class="table-wrap">
   <table>
     <thead><tr><th>Role</th><th>Posted</th><th>Deadline</th><th>Applicants</th><th>Status</th><th></th></tr></thead>
     <tbody>
-      <tr><td>Senior Backend Engineer</td><td>3 days ago</td><td>28 Jul 2026</td><td>31</td><td><span class="chip chip-open">Open</span></td><td class="actions"><a href="company-edit-job.html">Edit</a><a href="#">Close</a></td></tr>
-      <tr><td>DevOps Engineer</td><td>1 week ago</td><td>15 Jul 2026</td><td>18</td><td><span class="chip chip-open">Open</span></td><td class="actions"><a href="company-edit-job.html">Edit</a><a href="#">Close</a></td></tr>
-      <tr><td>Support Engineer</td><td>3 weeks ago</td><td>1 Jun 2026</td><td>64</td><td><span class="chip chip-closed">Closed</span></td><td class="actions"><a href="company-edit-job.html">Edit</a><a href="#" class="danger">Delete</a></td></tr>
-    </tbody>
+      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a href="company-edit-job.html">Edit</a><a href="#">Close</a></td></tr>
+      </tbody>
   </table>
 </div>
 
