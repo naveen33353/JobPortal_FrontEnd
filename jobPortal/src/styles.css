@@ -32,7 +32,8 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  margin: 0;
+  padding: 0%;
+  margin: 0%;
   font-family: var(--font-body);
   background: var(--paper);
   color: var(--ink);
@@ -476,6 +477,7 @@ textarea:focus-visible {
   background: #fff;
   border-right: 1px solid var(--line);
   padding: 28px 18px;
+  height: 100%;
 }
 .sidebar-group {
   margin-bottom: 22px;

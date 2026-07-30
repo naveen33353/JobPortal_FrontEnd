@@ -9,4 +9,5 @@ export class Application {
 
     status!: string;
     appliedDate!: Date;
+    companyName! : string;
 }

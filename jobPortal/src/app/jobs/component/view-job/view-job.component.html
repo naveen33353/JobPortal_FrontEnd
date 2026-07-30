@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details · HireHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+
+</head>
+
+<body>
+  <div class="page">
+    <header class="topnav app">
+      <div class="wrap">
+        <a href="seeker-dashboard.html" class="brand"><span class="brand-dot"></span>HireHub</a>
+        <nav class="nav-links app-links">
+          <a href="seeker-dashboard.html">Dashboard</a>
+          <a href="seeker-jobs.html" class="active">Find Jobs</a>
+          <a href="seeker-applications.html">Applications</a>
+          <a href="seeker-saved.html">Saved</a>
+          <a href="seeker-profile.html">Profile</a>
+        </nav>
+        <div class="avatar">AM</div>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-group">
+          <span class="sidebar-label">General</span>
+          <a href="seeker-dashboard.html"><span class="dot"></span>Dashboard</a>
+          <a href="seeker-jobs.html" class="active"><span class="dot"></span>Browse Jobs</a>
+          <a href="seeker-saved.html"><span class="dot"></span>Saved Jobs</a>
+        </div>
+        <div class="sidebar-group">
+          <span class="sidebar-label">Career</span>
+          <a href="seeker-applications.html"><span class="dot"></span>My Applications</a>
+          <a href="seeker-profile.html"><span class="dot"></span>My Profile</a>
+          <a href="seeker-resume.html"><span class="dot"></span>Resume &amp; Photo</a>
+        </div>
+      </aside>
+      <main class="main">
+
+        <div class="breadcrumb"><a href="seeker-jobs.html">Jobs</a> / <span>Backend Engineer</span></div>
+        <div class="card-row" style="grid-template-columns:2fr 1fr;align-items:start;">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <h1 style="font-size:26px;">{{job.jobTitle}} </h1><span class="chip chip-open">Open</span>
+            </div>
+            <p class="muted" style="margin-top:6px;">{{job.companyName}} · {{job.location}}, IN · {{job.postedDate |
+              date}} </p>
+            <div class="skill-tags" style="margin-top:16px;">
+              <span *ngFor="let skill of jobSkills"  class="skill-tag">{{skill}}</span>
+              <!-- <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">AWS</span> -->
+            </div>
+            <div class="card" style="margin-top:24px;">
+              <p style="font-size:14px;color:var(--ink-soft);">{{job.description}}</p>
+              <div class="card-row-3" style="margin-top:20px;">
+                <div><span class="mono-label">Experience</span>
+                  <p style="margin-top:4px;font-weight:600;">{{job.experience}}</p>
+                </div>
+                <div><span class="mono-label">Salary</span>
+                  <p style="margin-top:4px;font-weight:600;">{{job.salary | currency}}</p>
+                </div>
+                <div><span class="mono-label">Apply by</span>
+                  <p style="margin-top:4px;font-weight:600;">{{job.endDate | date}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="font-size:15px;margin-bottom:10px;">Ready to apply?</h3>
+            <a href="seeker-apply.html" class="btn btn-primary btn-block">Apply now</a>
+            <button class="btn btn-secondary btn-block" style="margin-top:8px;">Save</button>
+            <hr style="border:none;border-top:1px solid var(--line);margin:18px 0;">
+            <h3 style="font-size:14px;margin-bottom:6px;">About {{job.companyName}}</h3>
+            <p class="muted" style="font-size:13px;">{{job.location}}, IN · {{job.companyName}}</p>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

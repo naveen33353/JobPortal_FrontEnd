@@ -37,11 +37,11 @@ this.service.login(this.loginForm.value as login).subscribe(
 
 
     if(result.role == 'COMPANY'){
-      this.router.navigate(['/company-dashboard']);
+      this.router.navigate(['/company/company-dashboard']);
     }
 
     if(result.role == 'JOBSEEKER'){
-this.router.navigate(["/jobseeker-dashboard"]);
+this.router.navigate(["/seeker/jobseeker-dashboard"]);
     }
 
   }

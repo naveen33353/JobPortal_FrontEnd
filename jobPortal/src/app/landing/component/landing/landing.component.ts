@@ -38,7 +38,7 @@ export class LandingComponent {
 
       if (role === 'COMPANY') {
 
-        this.profileRoute = '/company-dashboard';
+        this.profileRoute = 'company/company-dashboard';
 
         this.compService.getCompanyById(id).subscribe((company) => {
           this.initials = company.companyName
@@ -51,7 +51,7 @@ export class LandingComponent {
 
       } else {
 
-        this.profileRoute = '/jobseeker-dashboard';
+        this.profileRoute = 'seeker/jobseeker-dashboard';
 
         this.jobSeekerService.getJobSeekerById(id).subscribe((seeker) => {
           this.initials = (seeker.firstName.charAt(0) + seeker.lastName.charAt(0)).toUpperCase();

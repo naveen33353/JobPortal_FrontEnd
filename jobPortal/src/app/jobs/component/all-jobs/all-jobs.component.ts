@@ -11,8 +11,8 @@ import { JobseekerService } from 'src/app/service/jobseeker/jobseeker.service';
   selector: 'app-all-jobs',
   templateUrl: './all-jobs.component.html',
   styleUrls: ['./all-jobs.component.css'],
-  standalone: true,
-  imports: [CommonModule, RouterModule]
+
+
 })
 export class AllJobsComponent {
 
@@ -63,7 +63,7 @@ export class AllJobsComponent {
         this.jobSeekerService.getJobSeekerById(id).subscribe({
           next: (user: any) => {
 
-            // userName ഇല്ലെങ്കിൽ firstName + lastName ഉപയോഗിക്കും
+          
             const name =
               user.userName ??
               `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim();
@@ -84,12 +84,16 @@ export class AllJobsComponent {
 
     this.getAllJobs();
   }
+totaljobs! : Number;
 
   getAllJobs(): void {
     this.jobService.getAllJobs().subscribe(res => {
       this.allJobs = res;
+      this.totaljobs = this.allJobs.length;
     });
   }
+
+
 
   logout(): void {
     localStorage.clear();

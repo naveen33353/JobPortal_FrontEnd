@@ -29,4 +29,14 @@ export class ApplicationService {
   getApplicationByjobSeekerId(id : number) : Observable <Application[]>{
     return this.http.get<Application[]>(this.url +"applications/jobseeker/" + id );
   }
+
+  getApplicationByStatus(status : string) : Observable<Application[]>{
+    return this.http.get<Application[]>(this.url + "applications/status/" + status);
+  }
+
+  getApplicatioByApproved(): Observable<Application[]>{
+ return this.http.get<Application[]>(this.url + "applications/approved");
+  }
+
+
 }

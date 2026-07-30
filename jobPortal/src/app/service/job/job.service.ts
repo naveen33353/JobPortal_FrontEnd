@@ -16,4 +16,18 @@ export class JobService {
   getAllJobs():Observable<Job[]>{
     return this.http.get<Job[]>(this.url + "jobs");
   }
+  
+  getSavedJobs( id : Number) : Observable<Job[]>{
+  return this.http.get<Job[]>(this.url + "jobs/saved/" + id );
+  }
+  
+  getRecommendedJobs(keyword : string){
+    return this.http.get<Job[]>(`${this.url}jobs/search?keyword=${keyword}`);
+  }
+
+  getJobbyId(id  : Number){
+    return this.http.get<Job>(this.url + "jobs/" + id);
+  }
+
+  
 }

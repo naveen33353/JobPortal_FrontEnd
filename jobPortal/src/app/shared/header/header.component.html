@@ -1,1 +1,27 @@
-<p>header works!</p>
+  <header class="topnav app">
+      <div class="wrap">
+
+        <a routerLink="/jobseeker-dashboard" class="brand">
+          <span class="brand-dot"></span>HireHub
+        </a>
+
+        <nav class="nav-links app-links">
+          <a routerLink="/jobseeker-dashboard" class="active">Dashboard</a>
+          <a routerLink="/alljobs">Find Jobs</a>
+          <a routerLink="/jobseeker-applications">Applications</a>
+          <a routerLink="/saved-jobs">Saved</a>
+          <a routerLink="/profile-jobseeker">Profile</a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="avatar">
+            <!-- {{ seeker?.firstName?.charAt(0) }}{{ seeker?.lastName?.charAt(0) }} -->
+          </div>
+
+          <button class="btn btn-ghost-dark btn-sm" (click)="logout()">
+            Logout
+          </button>
+        </div>
+
+      </div>
+    </header> 

@@ -10,8 +10,23 @@ const routes: Routes = [
     component : LandingComponent
   },
   {
-    path :'',
+    path :'auth',
     loadChildren : () => import('../app/auth/auth.module').then(m => m.AuthModule)
+  },
+   {
+    path: 'company',
+    loadChildren: () =>
+      import('./company/company.module').then(m => m.CompanyModule)
+  },
+  {
+    path: 'seeker',
+    loadChildren: () =>
+      import('./seeker/seeker.module').then(m => m.SeekerModule)
+  },
+  {
+    path: 'job',
+    loadChildren: () =>
+      import('./jobs/jobs.module').then(m => m.JobsModule)
   }
   
 ];

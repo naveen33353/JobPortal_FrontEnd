@@ -7,7 +7,7 @@ export class Job{
     "experience":string;
     "salary":string;
     "companyName":string;
-    "active":string;
+    "active":boolean;
     "jobTitle":string;
     "jobType":string;
     "location":string;

@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { SeekerRoutingModule } from './seeker-routing.module';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { SharedModule } from "src/app/shared/shared.module";
+
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
-    SeekerRoutingModule
-  ]
+    SeekerRoutingModule,
+    SharedModule
+]
 })
 export class SeekerModule { }
