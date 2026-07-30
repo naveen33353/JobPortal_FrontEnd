@@ -22,8 +22,8 @@ const routes: Routes = [
   {path:'company',component:CompanyComponent},
   {path:'company/:id' , component:CompanyComponent},
   {path:'company/edit/:id',component:EditProfileComponent},
-  {path:'company/applicants/:jobId',component:ApplicantsListComponent},
-  {path:'company/applicant/:appId', component:ApplicantComponent},
+  {path:'company-applicants/:jobId',component:ApplicantsListComponent},
+  {path:'company-applicant/:appId', component:ApplicantComponent},
   {path:'company/review/:appId',component:ReviewComponent}
 ];
 

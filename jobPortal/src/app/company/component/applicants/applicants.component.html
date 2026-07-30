@@ -44,7 +44,7 @@
   <table>
     <thead><tr><th>Role</th><th>Posted</th><th>Deadline</th><th>Applicants</th><th>Status</th><th></th></tr></thead>
     <tbody>
-      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a [routerLink]="['/company/applicants/',job.jobId]">View</a></td></tr>
+      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a [routerLink]="['../company-applicants/',job.jobId]">View</a></td></tr>
       </tbody>
   </table>
 </div>

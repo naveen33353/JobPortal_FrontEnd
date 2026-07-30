@@ -37,13 +37,8 @@ const routes: Routes = [
     loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)
   },
   {
-    path: '404',
-    loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule)
-  },
-  {
     path: '**',
-    redirectTo: '404'
-
+    loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule)
   }
 ];
 
