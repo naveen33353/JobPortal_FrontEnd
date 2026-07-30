@@ -21,12 +21,12 @@ export class AuthInterceptor implements HttpInterceptor {
     const url = new URL(req.url, window.location.origin).pathname;
 
     // Public endpoints (NO JWT required)
-    const isPublicPath =
-      url === '/api/auth/login' ||
-      url === '/api/auth/register' ||
-      url === '/api/auth/signup' ||
-      url === '/api/jobs' ||
-      url === '/api/company';
+const isPublicPath =
+  (req.method === 'GET' && url === '/api/jobs') ||
+  (req.method === 'GET' && url === '/api/company') ||
+  url === '/api/auth/login' ||
+  url === '/api/auth/register' ||
+  url === '/api/auth/signup';
 
     const token = localStorage.getItem('token');
 

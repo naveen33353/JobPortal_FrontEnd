@@ -20,7 +20,7 @@
       <a routerLink="/company-applicants" class="active">Applicants</a>
       <a routerLink="/profile-company">Company Profile</a>
     </nav>
-    <div class="avatar">NC</div>
+    <div class="avatar">{{initials}}</div>
   </div>
 </header>
 <div class="app-shell">
@@ -39,13 +39,15 @@
 </aside>
 <main class="main-wide">
 
-<div class="section-head"><h2>Manage Jobs</h2><a routerLink="/company-post-job" class="btn btn-primary btn-sm">Post a job</a></div>
+<div class="breadcrumb" >Manage Jobs / <span>{{job.jobTitle}}</span></div>
+<div class="section-head"><h2>{{applicants.length}} applicants</h2></div>
+<div class="tab-row"><span class="tab active">All</span><span class="tab">Pending</span><span class="tab">Approved</span></div>
 <div class="table-wrap">
   <table>
-    <thead><tr><th>Role</th><th>Posted</th><th>Deadline</th><th>Applicants</th><th>Status</th><th></th></tr></thead>
+    <thead><tr><th>Applicant</th><th>Applied On</th><th>Status</th><th></th></tr></thead>
     <tbody>
-      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a [routerLink]="['/company/applicants/',job.jobId]">View</a></td></tr>
-      </tbody>
+      <tr *ngFor="let app of applicants"><td>{{app.jobSeekerName}}</td><td>{{app.appliedDate}}</td><td><span class="chip" [ngClass]="{'chip-open': app.status === 'OPEN' , 'chip-rejected' : app.status === 'REJECTED' , 'chip-pending' : app.status === 'PENDING'}">{{app.status}}</span></td><td class="actions"><a [routerLink]="['/company/applicant/',app.id]">Review</a></td></tr>
+    </tbody>
   </table>
 </div>
 

@@ -42,8 +42,38 @@ export class DashboardComponent {
 }
 
 
-logout() {
-  localStorage.clear();
-  this.router.navigate(['/']);
+logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/']);
+    alert("Continue to Logout?");
+  }
+
+
+applicationsById :  any[] =[];
+ totalApplications = 0;
+
+
+getApplicationsByJobseekerId(id : number){
+  this.applicationService.getApplicationByjobSeekerId(id).subscribe({
+    next : (result) =>{
+      console.log(result);
+      this.applicationsById=result ;
+      this.totalApplications  = this.applicationsById.length;
+      console.log(this.totalApplications);
+    },
+     error: (err) => {
+      console.log(err);
+    }
+  });
 }
+
+ ngOnInit(){
+    this.getSeekerById(this.id);
+    this.getApplicationsByJobseekerId(this.id);
+    console.log(this.totalApplications);
+  }
+
+
+
+
 }
