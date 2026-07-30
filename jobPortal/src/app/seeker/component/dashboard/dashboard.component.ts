@@ -41,6 +41,7 @@ export class DashboardComponent {
   });
 }
 
+<<<<<<< HEAD
 
 logout(): void {
     localStorage.clear();
@@ -48,6 +49,14 @@ logout(): void {
     alert("Continue to Logout?");
   }
 
+=======
+logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/']);
+    alert("Continue to Logout?");
+  }
+
+>>>>>>> bf920fac1b3138a978a873b7eb25c89f1ff77998
 
 applicationsById :  any[] =[];
  totalApplications = 0;
@@ -74,6 +83,9 @@ getApplicationsByJobseekerId(id : number){
   }
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> bf920fac1b3138a978a873b7eb25c89f1ff77998
 }
