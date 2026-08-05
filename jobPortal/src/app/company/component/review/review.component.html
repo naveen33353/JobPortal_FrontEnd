@@ -1,54 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Review Application · HireHub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
 <div class="page">
-<header class="topnav app">
-  <div class="wrap">
-    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
-    <nav class="nav-links app-links">
-      <a routerLink="/company-dashboard" >Dashboard</a>
-      <a routerLink="/company-post-job">Post a Job</a>
-      <a routerLink="/company-manage-jobs">Manage Jobs</a>
-      <a routerLink="/company-applicants" class="active">Applicants</a>
-      <a routerLink="/profile-company">Company Profile</a>
-    </nav>
-    <div class="avatar">{{initials}}</div>
-  </div>
-</header>
+<app-header variant="company"></app-header>
 <div class="app-shell">
-<aside class="sidebar">
-  <div class="sidebar-group">
-    <span class="sidebar-label">General</span>
-    <a routerLink="/company-dashboard" ><span class="dot"></span>Dashboard</a>
-    <a routerLink="/profile-company"><span class="dot"></span>Company Profile</a>
-  </div>
-  <div class="sidebar-group">
-    <span class="sidebar-label">Hiring</span>
-    <a routerLink="/company-post-job"><span class="dot"></span>Post a Job</a>
-    <a routerLink="/company-manage-jobs"><span class="dot"></span>Manage Jobs</a>
-    <a routerLink="/company-applicants" class="active"><span class="dot"></span>Applicants</a>
-  </div>
-</aside>
+<app-sidebar variant="company"></app-sidebar>
 <main class="main">
 
-<div class="breadcrumb">Applicants / <span>{{app.jobSeekerName}}</span></div>
+<div class="breadcrumb">Applicants / <span>{{app?.jobSeekerName}}</span></div>
 <div class="page-title">Review application</div>
-<div class="page-sub">{{app.jobSeekerName}} · {{app.jobTitle}} · Applied on {{app.appliedDate}} &nbsp; <span
+<div class="page-sub">{{app?.jobSeekerName}} &middot; {{app?.jobTitle}} &middot; Applied on {{app?.appliedDate}} &nbsp; <span
       class="chip"
       [ngClass]="{
-        'chip-open': app.status === 'APPROVED',
-        'chip-rejected': app.status === 'REJECTED',
-        'chip-pending': app.status === 'PENDING'
+        'chip-open': app?.status === 'APPROVED',
+        'chip-rejected': app?.status === 'REJECTED',
+        'chip-pending': app?.status === 'PENDING'
       }">
-      {{ app.status }}
+      {{ app?.status }}
     </span></div>
 <div class="card" style="max-width:560px;">
   <h3 style="font-size:14px;margin-bottom:4px;">Set decision</h3>
@@ -59,7 +24,7 @@
   </div>
   <div class="timeline">
     <div class="timeline-item">
-      Application received, status set to {{ app.status }}
+      Application received, status set to {{ app?.status }}
     </div>
   </div>
 </div>
@@ -67,5 +32,3 @@
 </main>
 </div>
 </div>
-</body>
-</html>

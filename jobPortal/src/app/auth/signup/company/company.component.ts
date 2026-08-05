@@ -12,13 +12,6 @@ import { Company } from '../../Models/Company';
 export class CompanyComponent {
 constructor(private route : Router , private service : AuthService , private fb : FormBuilder){}
 
-login(){
-  this.route.navigate(['/login']);
-}
- signUp(){
-  this.route.navigate(['/register']);
-}
-
 companyReg = this.fb.group({
     companyName :['',Validators.required],
     email :['',Validators.required],
@@ -44,10 +37,10 @@ register() {
 submit(){
   console.log(this.companyReg.value)
   this.register();
-   this.companyReg.reset;
+   this.companyReg.reset();
    if(this.companyReg.valid){
     alert("Company Created !\n Welcome to Hirehub.")
-    this.route.navigate(['/login']);
+    this.route.navigate(['/auth/login']);
    }
    else{
     alert(`Something Went Wrong.\n Please try again`);

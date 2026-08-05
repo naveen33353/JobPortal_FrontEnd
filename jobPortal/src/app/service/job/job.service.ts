@@ -24,4 +24,19 @@ export class JobService {
   getJobById(id:number):Observable<Job>{
     return this.http.get<Job>(this.url + 'jobs/' +id);
   }
+
+  getSavedJobs(jobSeekerId: number): Observable<Job[]> {
+    return this.http.get<Job[]>(this.url + 'jobs/saved/' + jobSeekerId);
+  }
+
+  saveJobToProfile(jobId: number, jobSeekerId: number): Observable<any> {
+    return this.http.post(this.url + 'jobs/' + jobId + '/save/' + jobSeekerId, null, { responseType: 'text' });
+  }
+
+  removeSavedJob(jobId: number, jobSeekerId: number): Observable<any> {
+    return this.http.delete(this.url + 'jobs/' + jobId + '/unsave/' + jobSeekerId, { responseType: 'text' });
+  }
+  deleteJob(id:number){
+    return this.http.delete(this.url + "jobs/" + id);
+  }
 }

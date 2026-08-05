@@ -5,4 +5,5 @@ export class jobSeeker{
     password!: string
     skills!: string[]
     location!: string
+    resumeUrl?: string
 }

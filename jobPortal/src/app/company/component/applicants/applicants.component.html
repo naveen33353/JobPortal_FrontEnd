@@ -1,56 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Job Applicants · HireHub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-</head>
-<body>
 <div class="page">
-<header class="topnav app">
-  <div class="wrap">
-    <a routerLink="/" class="brand"><span class="brand-dot"></span>HireHub</a>
-    <nav class="nav-links app-links">
-      <a routerLink="/company-dashboard" >Dashboard</a>
-      <a routerLink="/company-post-job">Post a Job</a>
-      <a routerLink="/company-manage-jobs">Manage Jobs</a>
-      <a routerLink="/company-applicants" class="active">Applicants</a>
-      <a routerLink="/profile-company">Company Profile</a>
-    </nav>
-    <div class="avatar">NC</div>
-  </div>
-</header>
+<app-header variant="company"></app-header>
 <div class="app-shell">
-<aside class="sidebar">
-  <div class="sidebar-group">
-    <span class="sidebar-label">General</span>
-    <a routerLink="/company-dashboard" ><span class="dot"></span>Dashboard</a>
-    <a routerLink="/profile-company"><span class="dot"></span>Company Profile</a>
-  </div>
-  <div class="sidebar-group">
-    <span class="sidebar-label">Hiring</span>
-    <a routerLink="/company-post-job"><span class="dot"></span>Post a Job</a>
-    <a routerLink="/company-manage-jobs"><span class="dot"></span>Manage Jobs</a>
-    <a routerLink="/company-applicants" class="active"><span class="dot"></span>Applicants</a>
-  </div>
-</aside>
+<app-sidebar variant="company"></app-sidebar>
 <main class="main-wide">
 
-<div class="section-head"><h2>Manage Jobs</h2><a routerLink="/company-post-job" class="btn btn-primary btn-sm">Post a job</a></div>
+<div class="section-head"><h2>{{applications.length}} applicants across all jobs</h2></div>
 <div class="table-wrap">
   <table>
-    <thead><tr><th>Role</th><th>Posted</th><th>Deadline</th><th>Applicants</th><th>Status</th><th></th></tr></thead>
+    <thead><tr><th>Applicant</th><th>Role</th><th>Applied On</th><th>Status</th><th></th></tr></thead>
     <tbody>
-      <tr *ngFor="let job of jobs"><td>{{job.jobTitle}}</td><td>{{job.postedDate}}</td><td>{{job.endDate}}</td><td>{{job.applicantCount}}</td><td><span class="chip" [ngClass]="job.active? 'chip-open':'chip-closed'">{{job.active? "open":"closed"}}</span></td><td class="actions"><a [routerLink]="['/company/applicants/',job.jobId]">View</a></td></tr>
-      </tbody>
+      <tr *ngFor="let app of applications">
+        <td>{{app.jobSeekerName}}</td>
+        <td>{{app.jobTitle}}</td>
+        <td>{{app.appliedDate}}</td>
+        <td><span class="chip" [ngClass]="{'chip-open': app.status === 'APPROVED', 'chip-rejected': app.status === 'REJECTED', 'chip-pending': app.status === 'PENDING'}">{{app.status}}</span></td>
+        <td class="actions"><a [routerLink]="['/company/company/applicant', app.id]">Review</a></td>
+      </tr>
+    </tbody>
   </table>
 </div>
 
 </main>
 </div>
 </div>
-</body>
-</html>

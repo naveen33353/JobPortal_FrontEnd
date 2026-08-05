@@ -7,7 +7,6 @@ import { SeekerComponent } from './signup/seeker/seeker.component';
 import { guestGuard } from '../core/guard/guest.guard';
 
 const routes: Routes = [
-
   {
     path: 'login',
     component: LoginComponent,
@@ -27,18 +26,7 @@ const routes: Routes = [
     path: 'register/company',
     component: CompanyComponent,
     canActivate: [guestGuard]
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('../company/company.module').then(m => m.CompanyModule)
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('../seeker/seeker.module').then(m => m.SeekerModule)
   }
-
 ];
 
 @NgModule({

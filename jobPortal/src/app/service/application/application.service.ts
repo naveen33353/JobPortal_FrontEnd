@@ -47,6 +47,14 @@ export class ApplicationService {
     );
   }
 
+  getApprovedApplications(): Observable<Application[]> {
+    return this.http.get<Application[]>(this.url + 'applications/approved');
+  }
+
+  deleteApplication(id: number): Observable<any> {
+    return this.http.delete(this.url + 'applications/' + id);
+  }
+
  rejectApplication(id: number):Observable<any> {
   return this.http.put(
     `${this.url}applications/${id}/REJECTED`,

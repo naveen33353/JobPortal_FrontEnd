@@ -14,7 +14,9 @@ export class AuthService {
 
   url = environment.baseurl
    logout() {
-    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('id');
   }
 
   isLoggedIn(): boolean {

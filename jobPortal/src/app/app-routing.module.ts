@@ -1,30 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
 import { LandingComponent } from './landing/component/landing/landing.component';
-import { SignupComponent } from './auth/signup/signup.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LandingComponent,
+ {
+    path :'',
+    component : LandingComponent,
     pathMatch: 'full'
   },
   {
-    path: '',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    path :'auth',
+    loadChildren : () => import('../app/auth/auth.module').then(m => m.AuthModule)
+  },
+   {
+    path: 'company',
+    loadChildren: () =>
+      import('./company/company.module').then(m => m.CompanyModule)
   },
   {
-    path: '',
-    loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)
+    path: 'seeker',
+    loadChildren: () =>
+      import('./seeker/seeker.module').then(m => m.SeekerModule)
   },
   {
-    path: '404',
-    loadChildren: () => import('./notfound/notfound.module').then(m => m.NotfoundModule)
+    path: 'job',
+    loadChildren: () =>
+      import('./jobs/jobs.module').then(m => m.JobsModule)
+  },
+  {
+    path : 'application',
+    loadChildren : () => 
+      import('./application/application.module').then(m => m.ApplicationModule)
   },
   {
     path: '**',
-    redirectTo: '404'
+    loadChildren: () =>
+      import('./notfound/notfound.module').then(m => m.NotfoundModule)
   }
 ];
 

@@ -6,6 +6,7 @@ export class Application {
 
     jobId!: number;
     jobTitle!: string;
+    companyName?: string;
 
     status!: string;
     appliedDate!: Date;

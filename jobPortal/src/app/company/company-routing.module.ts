@@ -11,20 +11,66 @@ import { EditProfileComponent } from './component/edit-profile/edit-profile.comp
 import { ApplicantComponent } from './component/applicant/applicant.component';
 import { ApplicantsListComponent } from './component/applicants-list/applicants-list.component';
 import { ReviewComponent } from './component/review/review.component';
+import { authGuard } from '../core/guard/auth.guard';
 
 const routes: Routes = [
-  {path:'company-dashboard',component:DashboardComponent},
-  {path:'all-companies',component:AllCompaniesComponent},
-  {path:'profile-company',component:CompanyProfileComponent},
-  {path:'company-post-job',component:PostJobComponent},
-  {path:'company-manage-jobs',component:ManageJobComponent},
-  {path:'company-applicants',component:ApplicantsComponent},
-  {path:'company',component:CompanyComponent},
-  {path:'company/:id' , component:CompanyComponent},
-  {path:'company/edit/:id',component:EditProfileComponent},
-  {path:'company/applicants/:jobId',component:ApplicantsListComponent},
-  {path:'company/applicant/:appId', component:ApplicantComponent},
-  {path:'company/review/:appId',component:ReviewComponent}
+  {
+    path : 'all-companies',
+    component : AllCompaniesComponent
+  },
+  {
+    path : 'company',
+    component : CompanyComponent
+  },
+  {
+    path : 'company/:id',
+    component : CompanyComponent
+  },
+  {
+    path : 'company-dashboard',
+    component : DashboardComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'profile-company',
+    component : CompanyProfileComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company-post-job',
+    component : PostJobComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company-manage-jobs',
+    component : ManageJobComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company-applicants',
+    component : ApplicantsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company/edit/:id',
+    component : EditProfileComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company/applicants/:jobId',
+    component : ApplicantsListComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company/applicant/:appId',
+    component : ApplicantComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path : 'company/review/:appId',
+    component : ReviewComponent,
+    canActivate: [authGuard]
+  }
 ];
 
 @NgModule({

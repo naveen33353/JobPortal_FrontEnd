@@ -3,16 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { LandingRoutingModule } from './landing-routing.module';
 import { LandingComponent } from './component/landing/landing.component';
-import { AllJobsComponent } from '../jobs/component/all-jobs/all-jobs.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     LandingComponent,
-    
+
   ],
   imports: [
     CommonModule,
-    LandingRoutingModule
+    LandingRoutingModule,
+    SharedModule
   ],
   exports: [
     LandingComponent

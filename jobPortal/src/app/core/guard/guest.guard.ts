@@ -12,9 +12,9 @@ export const guestGuard: CanActivateFn = (route, state) => {
     const role = localStorage.getItem('role');
 
     if (role === 'COMPANY') {
-      router.navigate(['/company-dashboard']);
+      router.navigate(['/company/company-dashboard']);
     } else {
-      router.navigate(['/jobseeker-dashboard']);
+      router.navigate(['/seeker/jobseeker-dashboard']);
     }
 
     return false;

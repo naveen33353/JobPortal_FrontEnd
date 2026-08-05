@@ -5,22 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingModule } from './landing/landing.module';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
-import { AuthModule } from './auth/auth.module';
-import { LoginComponent } from './auth/login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LandingModule,
-   HttpClientModule
-    
+    HttpClientModule
   ],
   providers: [
      {

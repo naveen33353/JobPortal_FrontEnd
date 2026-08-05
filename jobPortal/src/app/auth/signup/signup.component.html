@@ -1,51 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register · HireHub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
 <div class="page">
-<header class="topnav">
-  <div class="wrap">
-    <a href="index.html" class="brand"><span class="brand-dot"></span>HireHub</a>
-    <nav class="nav-links">
-      <a href="jobs.html">Find Jobs</a>
-      <a href="companies.html">Companies</a>
-      <a href="register-company.html">For Employers</a>
-    </nav>
-    <div class="nav-actions">
-      <a (click)="login()" class="btn btn-ghost-dark btn-sm">Log in</a>
-      <a routerLink="register" class="btn btn-primary btn-sm">Sign up</a>
-    </div>
-  </div>
-</header>
+<app-header variant="guest"></app-header>
 
 <div class="auth-wrap">
   <div class="auth-card" style="max-width:460px;">
-    <h2>Join HireHub as…</h2>
+    <h2>Join HireHub as&hellip;</h2>
     <div class="role-cards">
       <div class="role-card">
         <div><h3>Job Seeker</h3><p>Search roles, apply, and track every application.</p></div>
-        <a routerLink="/register/seeker" class="btn btn-primary btn-sm">Continue</a>
+        <a routerLink="/auth/register/seeker" class="btn btn-primary btn-sm">Continue</a>
       </div>
       <div class="role-card">
         <div><h3>Company</h3><p>Post roles and review incoming applicants.</p></div>
-        <a routerLink="/register/company" class="btn btn-secondary btn-sm">Continue</a>
+        <a routerLink="/auth/register/company" class="btn btn-secondary btn-sm">Continue</a>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© 2026 HireHub</span>
-    <span class="mono-label" style="color:var(--muted-lt)">com.aitrich.JobPortalSystem</span>
-  </div>
-</footer>
+<app-footer></app-footer>
 </div>
-</body>
-</html>

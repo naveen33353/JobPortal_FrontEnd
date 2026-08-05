@@ -14,14 +14,6 @@ export class SeekerComponent {
 
   constructor(private route : Router,private service  : AuthService, private fb : FormBuilder){}
 
-  signUp(){
-  this.route.navigate(['/register']);
-}
-
-login(){
-  this.route.navigate(['/login']);
-}
-
 
 regSeeker = this.fb.group({
   firstName : ['', Validators.required],
@@ -60,7 +52,7 @@ regSeeker = this.fb.group({
 
       this.regSeeker.reset();
 
-      this.route.navigate(['/login']);
+      this.route.navigate(['/auth/login']);
     },
 
     error: (err) => {

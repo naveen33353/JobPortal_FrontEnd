@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { ApplicantComponent } from './component/applicant/applicant.component';
 import { ApplicantsListComponent } from './component/applicants-list/applicants-list.component';
 import { ReviewComponent } from './component/review/review.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ReviewComponent } from './component/review/review.component';
     CommonModule,
     CompanyRoutingModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class CompanyModule { }

@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CompanyComponent } from './signup/company/company.component';
 import { SeekerComponent } from './signup/seeker/seeker.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

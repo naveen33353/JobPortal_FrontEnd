@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Application } from 'src/app/auth/Models/Application';
 import { Company } from 'src/app/landing/models/company';
 import { Job } from 'src/app/landing/models/job';
@@ -11,64 +10,46 @@ import { CompanyService } from 'src/app/service/company/company.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
-  ngOnInit() {
-  console.log("ID:", localStorage.getItem("id"));
-  console.log("Token:", localStorage.getItem("token"));
+export class DashboardComponent implements OnInit {
 
-  this.getCompanyById();
-  this.getJobsByCompany();
-  this.getApplicantsByCompany();
-  this.getPendingApplications();
-  this.getHiredApplicants();
-}
+  company!: Company;
+  jobs: Job[] = [];
+  applications: Application[] = [];
+  pendingApplications: Application[] = [];
+  approvedAppplications: Application[] = [];
 
-  company!:Company;
-  jobs:Job[] = [];
-  applications:Application[] = [];
-  pendingApplications :Application[] = [];
-  approvedAppplications:Application[] = [];
+  constructor(private compService: CompanyService, private appService: ApplicationService) {}
 
-  constructor(private compService:CompanyService , private appService:ApplicationService ,private router:Router){}
-
-  getCompanyById(){
-    this.compService.getCompanyById( Number(localStorage.getItem("id"))).subscribe(
-      (res)=>
-          this.company = res
-    )
+  ngOnInit(): void {
+    this.getCompanyById();
+    this.getJobsByCompany();
+    this.getApplicantsByCompany();
+    this.getPendingApplications();
+    this.getHiredApplicants();
   }
 
-  getJobsByCompany(){
-    this.compService.getJobsByCompany(Number(localStorage.getItem("id"))).subscribe(
-      (res)=>
-          this.jobs = res
-    )
+  getCompanyById() {
+    this.compService.getCompanyById(Number(localStorage.getItem('id')))
+      .subscribe(res => this.company = res);
   }
 
-  getApplicantsByCompany(){
-    this.appService.getApplicantsByCompany(Number(localStorage.getItem("id"))).subscribe(
-      (res)=>
-          this.applications = res
-    )
+  getJobsByCompany() {
+    this.compService.getJobsByCompany(Number(localStorage.getItem('id')))
+      .subscribe(res => this.jobs = res);
   }
 
-  getPendingApplications(){
-    this.appService.getPendindApplicants(Number(localStorage.getItem("id"))).subscribe(
-      (res)=>
-          this.pendingApplications = res
-    )
+  getApplicantsByCompany() {
+    this.appService.getApplicantsByCompany(Number(localStorage.getItem('id')))
+      .subscribe(res => this.applications = res);
   }
 
-  getHiredApplicants(){
-    this.appService.getHiredApplicants(Number(localStorage.getItem("id"))).subscribe(
-      (res)=>
-          this.approvedAppplications = res
-    )
+  getPendingApplications() {
+    this.appService.getPendindApplicants(Number(localStorage.getItem('id')))
+      .subscribe(res => this.pendingApplications = res);
   }
 
-  logout(): void {
-    localStorage.clear();
-    this.router.navigate(['/']);
-    alert("Continue to Logout?");
+  getHiredApplicants() {
+    this.appService.getHiredApplicants(Number(localStorage.getItem('id')))
+      .subscribe(res => this.approvedAppplications = res);
   }
 }

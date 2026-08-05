@@ -1,67 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Job Seeker Dashboard · HireHub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
-</head>
-<body>
 <div class="page">
-<header class="topnav app">
-  <div class="wrap">
-
-    <a routerLink="/jobseeker-dashboard" class="brand">
-      <span class="brand-dot"></span>HireHub
-    </a>
-
-    <nav class="nav-links app-links">
-      <a routerLink="/jobseeker-dashboard" class="active">Dashboard</a>
-      <a routerLink="/alljobs">Find Jobs</a>
-      <a routerLink="/jobseeker-applications">Applications</a>
-      <a routerLink="/saved-jobs">Saved</a>
-      <a routerLink="/profile-jobseeker">Profile</a>
-    </nav>
-
-    <div class="nav-actions">
-      <div class="avatar">
-        {{ seeker?.firstName?.charAt(0) }}{{ seeker?.lastName?.charAt(0) }}
-      </div>
-
-      <button class="btn btn-ghost-dark btn-sm" (click)="logout()">
-        Logout
-      </button>
-    </div>
-
-  </div>
-</header>
+<app-header variant="seeker"></app-header>
 <div class="app-shell">
-<aside class="sidebar">
-  <div class="sidebar-group">
-    <span class="sidebar-label">General</span>
-    <a href="seeker-dashboard.html" class="active"><span class="dot"></span>Dashboard</a>
-    <a href="seeker-jobs.html"><span class="dot"></span>Browse Jobs</a>
-    <a href="seeker-saved.html"><span class="dot"></span>Saved Jobs</a>
-  </div>
-  <div class="sidebar-group">
-    <span class="sidebar-label">Career</span>
-    <a href="seeker-applications.html"><span class="dot"></span>My Applications</a>
-    <a href="seeker-profile.html"><span class="dot"></span>My Profile</a>
-    <a href="seeker-resume.html"><span class="dot"></span>Resume &amp; Photo</a>
-  </div>
-</aside>
+<app-sidebar variant="seeker"></app-sidebar>
 <main class="main">
 
 <div class="page-title"> Welcome back, {{seeker?.firstName }}</div>
 <div class="page-sub">Here's where your search stands.</div>
-<div style="margin-bottom:24px;"><a href="seeker-jobs.html" class="btn btn-primary">Browse jobs</a></div>
+<div style="margin-bottom:24px;"><a routerLink="/job/all-jobs" class="btn btn-primary">Browse jobs</a></div>
 <div class="card-row-3" style="margin-bottom:32px;">
   <div class="stat-card"><div class="n">{{ totalApplications }}</div><div class="l">Applications sent</div></div>
   <div class="stat-card"><div class="n">5</div><div class="l">Pending review</div><span class="sub">in progress</span></div>
-  <div class="stat-card"><div class="n">3</div><div class="l">Approved</div><span class="sub">↑ offers</span></div>
+  <div class="stat-card"><div class="n">3</div><div class="l">Approved</div><span class="sub">&uarr; offers</span></div>
 </div>
 <div class="card-row-3" style="margin-bottom:32px;grid-template-columns:1fr;max-width:220px;">
   <div class="stat-card"><div class="n">9</div><div class="l">Saved jobs</div></div>
@@ -79,12 +28,10 @@
 </div>
 <div class="section-head"><h2>Recommended for your skills</h2></div>
 <div class="card-row">
-  <div class="job-card"><div class="top"><h3 style="font-size:15px;">DevOps Engineer</h3><span class="chip chip-open">Open</span></div><div class="meta">Nimbus Cloud · Remote</div></div>
-  <div class="job-card"><div class="top"><h3 style="font-size:15px;">Java Developer</h3><span class="chip chip-open">Open</span></div><div class="meta">Solstice Retail · Mumbai</div></div>
+  <div class="job-card"><div class="top"><h3 style="font-size:15px;">DevOps Engineer</h3><span class="chip chip-open">Open</span></div><div class="meta">Nimbus Cloud &middot; Remote</div></div>
+  <div class="job-card"><div class="top"><h3 style="font-size:15px;">Java Developer</h3><span class="chip chip-open">Open</span></div><div class="meta">Solstice Retail &middot; Mumbai</div></div>
 </div>
 
 </main>
 </div>
 </div>
-</body>
-</html>
